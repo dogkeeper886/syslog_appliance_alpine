@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: syslog
+  name: syslog
+  namespace: default
+spec:
+  ports:
+  - port: 514
+    protocol: UDP
+  selector:
+    app: syslog
+  type: NodePort
