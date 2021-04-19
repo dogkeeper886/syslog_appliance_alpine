@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: syslog_appliance_alpine
+  name: syslog_appliance_alpine
+  namespace: default
+spec:
+  ports:
+  - port: 514
+    protocol: UDP
+  selector:
+    app: syslog_appliance_alpine
+  type: NodePort
