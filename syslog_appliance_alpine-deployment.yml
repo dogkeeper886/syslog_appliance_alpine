@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: syslog_appliance_alpine-deployment
+  name: syslog-deployment
   labels:
-    app: syslog_appliance_alpine
+    app: syslog
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: syslog_appliance_alpine
+      app: syslog
   template:
     metadata:
       labels:
-        app: syslog_appliance_alpine
+        app: syslog
     spec:
       containers:
-      - name: syslog_appliance_alpine
+      - name: syslog
         image: rsyslog/syslog_appliance_alpine
         ports:
         - containerPort: 514
