@@ -27,7 +27,10 @@ spec:
         image: grafana/promtail:2.3.0
         volumeMounts:
         - mountPath: /logs/hosts
-          name: logfile-volume    
+          name: logfile-volume
+        - name: promtail-config
+          mountPath: /etc/promtail/config.yml
+          subPath: config.yml              
       securityContext:
         fsGroup: 1000
       volumes:
