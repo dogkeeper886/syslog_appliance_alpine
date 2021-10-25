@@ -25,6 +25,9 @@ spec:
           name: logfile-volume
       - name: promtail
         image: grafana/promtail:2.3.0
+        ports:
+        - containerPort: 9080
+          protocol: TCP        
         volumeMounts:
         - mountPath: /logs/hosts
           name: logfile-volume

@@ -9,6 +9,10 @@ spec:
   ports:
   - port: 514
     protocol: UDP
+    name: syslog
+  - port: 9080
+    protocol: TCP
+    name: promtail
   selector:
     app: syslog
   type: NodePort
