@@ -23,6 +23,11 @@ spec:
         volumeMounts:
         - mountPath: /logs/hosts
           name: syslog-pv
+      - name: promtail
+        image: grafana/promtail:2.0.0
+        volumeMounts:
+        - mountPath: /logs/hosts
+          name: syslog-pv     
       securityContext:
         fsGroup: 1000
       volumes:
