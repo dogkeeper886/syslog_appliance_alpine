@@ -38,4 +38,4 @@ spec:
         emptyDir: {}
       - name: promtail-config
         configMap:
-          name: promtail-configmap
+          name: syslog-configmap
