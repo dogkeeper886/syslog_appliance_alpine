@@ -22,15 +22,17 @@ spec:
           protocol: UDP
         volumeMounts:
         - mountPath: /logs/hosts
-          name: syslog-cache
+          name: logfile-volume
       - name: promtail
         image: grafana/promtail:2.0.0
         volumeMounts:
         - mountPath: /logs/hosts
-          name: syslog-cache    
+          name: logfile-volume    
       securityContext:
         fsGroup: 1000
       volumes:
-      - name: syslog-cache
+      - name: logfile-volume
         emptyDir: {}
-
+      - name: promtail-config
+        configMap:
+          name: promtail-configmap
