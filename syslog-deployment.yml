@@ -20,3 +20,12 @@ spec:
         ports:
         - containerPort: 514
           protocol: UDP
+        volumeMounts:
+        - mountPath: /log/hosts
+          name: syslog-pv
+      securityContext:
+        fsGroup: 1000
+      volumes:
+      - name: syslog-pv
+        persistentVolumeClaim:
+          claimName: syslog-pv-claim          
