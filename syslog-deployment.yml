@@ -21,7 +21,7 @@ spec:
         - containerPort: 514
           protocol: UDP
         volumeMounts:
-        - mountPath: /log/hosts
+        - mountPath: /logs/hosts
           name: syslog-pv
       securityContext:
         fsGroup: 1000
