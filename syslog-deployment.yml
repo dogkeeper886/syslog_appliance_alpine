@@ -24,7 +24,7 @@ spec:
         - mountPath: /logs/hosts
           name: logfile-volume
       - name: promtail
-        image: grafana/promtail:2.0.0
+        image: grafana/promtail:2.3.0
         volumeMounts:
         - mountPath: /logs/hosts
           name: logfile-volume    
