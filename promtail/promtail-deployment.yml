@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: primtail-deployment
+  labels:
+    app: primtail
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: primtail
+  template:
+    metadata:
+      labels:
+        app: primtail
+    spec:
+      containers:
+      - name: promtail
+        image: grafana/promtail:2.3.0
+        ports:
+        - containerPort: 9080
+          protocol: TCP        
+        volumeMounts:
+        - name: promtail-config
+          mountPath: /etc/promtail/config.yml
+          subPath: config.yml              
+      volumes:
+      - name: promtail-config
+        configMap:
+          name: primtail-configmap
