@@ -13,12 +13,9 @@ data:
 
     scrape_configs:
       - job_name: "kubernetes-apiservers"
-
         kubernetes_sd_configs:
           - role: endpoints
-
         scheme: https
-
         tls_config:
           ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         authorization:
@@ -35,44 +32,33 @@ data:
             regex: default;kubernetes;https
 
       - job_name: "kubernetes-nodes"
-
         scheme: https
-
         tls_config:
           ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         authorization:
           credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-
         kubernetes_sd_configs:
           - role: node
-
         relabel_configs:
           - action: labelmap
             regex: __meta_kubernetes_node_label_(.+)
 
       - job_name: "kubernetes-cadvisor"
-
         scheme: https
-
         metrics_path: /metrics/cadvisor
-
         tls_config:
           ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
         authorization:
           credentials_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-
         kubernetes_sd_configs:
           - role: node
-
         relabel_configs:
           - action: labelmap
             regex: __meta_kubernetes_node_label_(.+)
 
       - job_name: "kubernetes-service-endpoints"
-
         kubernetes_sd_configs:
           - role: endpoints
-
         relabel_configs:
           - action: labelmap
             regex: __meta_kubernetes_service_label_(.+)
@@ -84,14 +70,11 @@ data:
             target_label: service
 
       - job_name: "kubernetes-services"
-
         metrics_path: /probe
         params:
           module: [http_2xx]
-
         kubernetes_sd_configs:
           - role: service
-
         relabel_configs:
           - source_labels: [__address__]
             target_label: __param_target
@@ -107,14 +90,11 @@ data:
             target_label: service
 
       - job_name: "kubernetes-ingresses"
-
         metrics_path: /probe
         params:
           module: [http_2xx]
-
         kubernetes_sd_configs:
           - role: ingress
-
         relabel_configs:
           - source_labels:
               [
@@ -137,10 +117,8 @@ data:
             target_label: ingress
 
       - job_name: "kubernetes-pods"
-
         kubernetes_sd_configs:
           - role: pod
-
         relabel_configs:
           - action: labelmap
             regex: __meta_kubernetes_pod_label_(.+)
