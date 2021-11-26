@@ -11,7 +11,6 @@ data:
     clients:
       - url: http://loki:3100/loki/api/v1/push
 
-    scrape_configs:
     # A scrape configuration for running Prometheus on a Kubernetes cluster.
     # This uses separate scrape configs for cluster components (i.e. API server, node)
     # and services to allow each to use different authentication configs.
