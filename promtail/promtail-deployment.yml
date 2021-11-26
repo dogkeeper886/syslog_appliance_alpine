@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: primtail-deployment
+  name: promtail-deployment
   labels:
-    app: primtail
+    app: promtail
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: primtail
+      app: promtail
   template:
     metadata:
       labels:
-        app: primtail
+        app: promtail
     spec:
       containers:
       - name: promtail
@@ -27,4 +27,4 @@ spec:
       volumes:
       - name: promtail-config
         configMap:
-          name: primtail-configmap
+          name: promtail-configmap
