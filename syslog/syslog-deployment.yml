@@ -1,11 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: syslog-deployment
+  name: syslog
   labels:
     app: syslog
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: syslog
